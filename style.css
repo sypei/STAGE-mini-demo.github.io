@@ -1,0 +1,40 @@
+*{
+    padding:0;
+    margin:0;
+}
+#game{
+    width: 900px;
+    height: 600px;
+/*    border: 1px solid black;*/
+    margin: auto;
+}
+#tutor{
+    position: relative;
+    bottom:-395px;
+    left:0px
+}
+#character{
+    position: relative;
+    bottom:-260px;
+    left: 250px;
+}
+#frog{
+    width: 80px;
+    height: 50px;
+/*    background-color: green;*/
+    position: relative;
+    bottom:-550px;
+    left: 600px;
+}
+.frog-jump{
+    animation: frog-jump 1s ease;
+}
+@keyframes frog-jump{
+    0%   { transform: scale(1,1)      translateY(0); }
+    10%  { transform: scale(1.1,.9)   translateY(0); }
+    30%  { transform: scale(.9,1.1)   translateY(-300px); }
+    50%  { transform: scale(1.05,.95) translateY(0); }
+    57%  { transform: scale(1,1)      translateY(-21px); }
+    64%  { transform: scale(1,1)      translateY(0); }
+    100% { transform: scale(1,1)      translateY(0); }
+}
