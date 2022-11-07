@@ -1,2 +1,2 @@
-# audio-processing-module
-Real-time audio processing module that visualizes loudness of audio signal within web browser
+# STAGE-mini-demo
+Real-time child pronunciation training game that visualizes formant location within web browser
