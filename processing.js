@@ -1,4 +1,5 @@
 window.onload = function () {
+    
     "use strict";
     var paths = document.getElementsByTagName('path');
     var visualizer = document.getElementById('visualizer');
@@ -6,8 +7,9 @@ window.onload = function () {
     var h = document.getElementsByTagName('h1')[0];
     var f1 = document.getElementsByTagName('h2')[0];
     var f2 = document.getElementsByTagName('h2')[1];
+    var vowel = document.getElementsByTagName('h2')[2];
     var path;
-    
+
     var soundAllowed = function (stream) {
         window.persistAudioStream = stream;
         h.setAttribute('style', 'opacity: 0;');
@@ -15,16 +17,19 @@ window.onload = function () {
         var audioStream = audioContent.createMediaStreamSource( stream );
         var analyser = audioContent.createAnalyser();
         audioStream.connect(analyser);
-        analyser.fftSize = 1024;
+        // var frequencyArray = new Uint8Array(analyser.frequencyBinCount);
+        var frequencyArray = new Uint8Array(1024);
+        analyser.smoothingTimeConstant = 0.7;
+        analyser.fftSize = 2048;
 
-        var extractFormants = require("./extractFormants");
         var formants = [];
 
-        var frequencyArray = new Uint8Array(analyser.frequencyBinCount);
+        
         visualizer.setAttribute('viewBox', '0 0 255 255');
 
         function indexToFrequency (i) {
             return i * audioContent.sampleRate / analyser.fftSize;
+            
         }
         function valueToPercent (value) {
             return value / 256;;
@@ -39,8 +44,10 @@ window.onload = function () {
             requestAnimationFrame(doDraw);
             analyser.getByteFrequencyData(frequencyArray);
             formants = extractFormants(frequencyArray, indexToFrequency, valueToPercent);
-            f1.innerHTML = Math.round(formants[0].freq);
-            f2.innerHTML = Math.round(formants[1].freq);
+            f1.innerHTML = "f1: "+Math.round(formants[0].freq);
+            f2.innerHTML = "f2: "+Math.round(formants[1].freq);
+            vowel.innerHTML = formantsToVowel(formants[0],formants[1]);
+            
           	var adjustedLength;
             for (var i = 0 ; i < 255; i++) {
               	adjustedLength = Math.floor(frequencyArray[i]) - (Math.floor(frequencyArray[i]) % 5);
@@ -48,7 +55,9 @@ window.onload = function () {
             }
 
         }
+        console.log(analyser.frequencyBinCount);
         doDraw();
+        
     }
 
     var soundNotAllowed = function (error) {

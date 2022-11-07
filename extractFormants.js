@@ -1,5 +1,3 @@
-var _ = require("lodash");
-
 function extractFormants (frequenciesBuffer, indexToFrequency, valueToPercent) {
   var size = frequenciesBuffer.length;
   var f1, f2;
@@ -7,16 +5,17 @@ function extractFormants (frequenciesBuffer, indexToFrequency, valueToPercent) {
   var period = 16;
   var sma = simple_moving_averager(period);
 
-  _.each(frequenciesBuffer, function (value, i) {
+  // each(frequenciesBuffer, function (value, i) {
+  frequenciesBuffer.forEach(function(value,i){
     var freq = indexToFrequency(i);
     var db = valueToPercent(sma(value));
-    if (freq < 1500) {
+    if (freq < 900) {
       if (db > maxf1) {
         maxf1 = db;
         f1 = freq;
       }
     }
-    else if (freq < 5000) {
+    else if (freq > 1500 && freq < 5000) {
       if (db > maxf2) {
         maxf2 = db;
         f2 = freq;
@@ -47,5 +46,3 @@ function simple_moving_averager(period) {
         return(sum/n);
     }
 }
-
-module.exports = extractFormants;

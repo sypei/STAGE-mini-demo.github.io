@@ -12,16 +12,17 @@
                 </g>
             </mask>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#ff0a0a;stop-opacity:1" />
-                <stop offset="20%" style="stop-color:#f1ff0a;stop-opacity:1" />
-                <stop offset="90%" style="stop-color:#d923b9;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#050d61;stop-opacity:1" />
+                <stop offset="0%" style="stop-color:#ffeb0a;stop-opacity:1" />
+                <stop offset="20%" style="stop-color:#4fff0a;stop-opacity:1" />
+                <stop offset="90%" style="stop-color:#23c7d9;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#6032ca;stop-opacity:1" />
             </linearGradient>
         </defs>
         <rect x="0" y="0" width="100%" height="100%" fill="url(#gradient)" mask="url(#mask)"></rect>
     </svg>
     <h2 id="f1">f1</h2>
     <h2 id="f2">f2</h2>
+    <h2 id="vowel">vowel</h2>
     <div id="frog">
         <image src="images/frog.jpeg" width="50px"></image>
     </div>
@@ -35,5 +36,7 @@
     <h1>Please allow the use of your microphone</h1>
     <script src="processing.js">
     </script>
+    <script src="extractFormants.js"></script>
+    <script src="formantsToVowel.js"></script>
 </body>
 </html>
