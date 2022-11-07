@@ -1,22 +1,70 @@
-*{
-    padding:0;
-    margin:0;
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color:white;
+  font-size: 0;
 }
-#game{
+
+svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position:absolute;
+}
+
+h1 {
+  width: 100%;
+  font-family: sans-serif;
+  position:absolute;
+  text-align:center;
+  color:black;
+  font-size: 18px;
+  top: 40%;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out;
+}
+h2 {
+  width: 100%;
+  font-family: sans-serif;
+  text-align:center;
+  color:black;
+  font-size: 18px;
+  top: 40%;
+  opacity: 1;
+}
+
+h1 a {
+  color: #48b1f4;
+  text-decoration:none;
+}
+
+path {
+  stroke-linecap: square;
+  stroke: white;
+  stroke-width: 0.5px;
+}
+
+/*#game{
     width: 900px;
     height: 600px;
-/*    border: 1px solid black;*/
+    border: 1px solid black;
     margin: auto;
-}
+}*/
 #tutor{
     position: relative;
     bottom:-395px;
-    left:0px
+    left:550px
 }
 #character{
     position: relative;
     bottom:-260px;
-    left: 250px;
+    left: 800px;
 }
 #frog{
     width: 80px;
@@ -24,7 +72,7 @@
 /*    background-color: green;*/
     position: relative;
     bottom:-550px;
-    left: 600px;
+    left: 1150px;
 }
 .frog-jump{
     animation: frog-jump 1s ease;
